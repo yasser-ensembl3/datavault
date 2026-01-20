@@ -1,0 +1,94 @@
+# API Reference
+
+DataVault exposes a simple REST API for interacting with your Notion database.
+
+## Endpoints
+
+### GET /api/content
+
+Fetches all research results from the Notion database.
+
+#### Query Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `type` | string | Filter by result type |
+| `status` | string | Filter by status |
+| `source` | string | Filter by source |
+| `search` | string | Search in title |
+
+#### Response
+
+```json
+{
+  "items": [
+    {
+      "id": "page-id-123",
+      "title": "Market Research Data",
+      "url": "https://example.com/data",
+      "type": "Dataset",
+      "source": "API",
+      "status": "To Review",
+      "dateAdded": "2024-01-15",
+      "description": "Q4 market analysis from external API",
+      "tags": ["market", "q4", "analysis"],
+      "notionUrl": "https://notion.so/..."
+    }
+  ],
+  "filters": {
+    "types": ["Dataset", "Web Search", "Insight"],
+    "sources": ["API", "Google", "Manual"],
+    "statuses": ["To Review", "Validated", "Archived"]
+  }
+}
+```
+
+#### Example
+
+```bash
+# Get all results
+curl http://localhost:3000/api/content
+
+# Filter by type
+curl http://localhost:3000/api/content?type=Dataset
+
+# Search
+curl http://localhost:3000/api/content?search=market
+```
+
+---
+
+### POST /api/content
+
+Adds a new research result to the Notion database.
+
+#### Request Body
+
+```json
+{
+  "title": "New Finding",
+  "url": "https://example.com",
+  "type": "Web Search",
+  "source": "Google",
+  "status": "To Review",
+  "description": "Important finding about X"
+}
+```
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `title` | string | Yes | Result title |
+| `url` | string | No | Source URL (optional for notes) |
+| `type` | string | No | Result type |
+| `source` | string | No | Data source |
+| `status` | string | No | Status (defaults to "To Review") |
+| `description` | string | No | Summary or notes |
+
+#### Response
+
+```json
+{
+  "success": true,
+  "id": "new-page-id-456"
+}
+```

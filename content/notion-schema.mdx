@@ -1,0 +1,59 @@
+# Notion Database Schema
+
+Your Notion database should have the following properties for DataVault to work correctly.
+
+## Required Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| **Title** (or Name) | Title | The research result title |
+| **Status** | Select | Review status |
+| **Date Added** | Date | When the result was added |
+
+## Recommended Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| URL | URL | Link to the source (optional for notes) |
+| Type | Select | Category of research |
+| Source | Select | Where the data came from |
+| Description | Text | Summary or notes about the result |
+| Tags | Multi-select | Keywords for organization |
+
+## Suggested Select Options
+
+### Type Options
+- Web Search
+- API Data
+- Dataset
+- Analysis
+- Article
+- Paper
+- Website
+- Insight
+- Other
+
+### Status Options
+- To Review
+- Reviewing
+- Validated
+- Important
+- Archived
+
+### Source Options
+- Google
+- ChatGPT
+- Perplexity
+- API
+- Database
+- Manual
+- Scraping
+- Other
+
+## Example Database
+
+| Title | URL | Type | Status | Source | Description |
+|-------|-----|------|--------|--------|-------------|
+| Market size data | https://... | Dataset | To Review | API | Q4 2024 market analysis |
+| Competitor pricing | https://... | Web Search | Validated | Google | Found 5 competitors |
+| User feedback patterns | - | Insight | Important | Manual | Key themes from surveys |
