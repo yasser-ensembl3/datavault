@@ -3,7 +3,6 @@ export default {
     title: 'Home',
     display: 'hidden'
   },
-  vault: 'Vault',
   feed: 'Feed',
   assumptions: 'Assumptions',
   sources: 'Sources',
