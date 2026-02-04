@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { Sidebar } from "@/components/sidebar"
+import { MobileNav } from "@/components/mobile-nav"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -25,9 +26,10 @@ export default function RootLayout({
     <html lang="en" dir="ltr" className="dark" suppressHydrationWarning>
       <body className={`${inter.className} bg-zinc-950 text-zinc-100 antialiased`}>
         <Sidebar />
-        <main className="ml-56 min-h-screen">
+        <main className="md:ml-48 min-h-screen pb-14 md:pb-0">
           {children}
         </main>
+        <MobileNav />
       </body>
     </html>
   )

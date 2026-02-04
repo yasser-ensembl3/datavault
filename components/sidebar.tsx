@@ -55,42 +55,41 @@ export function Sidebar() {
   const isFeedActive = pathname.startsWith("/feed")
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-56 bg-zinc-900 border-r border-zinc-800 flex flex-col">
+    <aside className="fixed left-0 top-0 h-screen w-48 bg-zinc-900 border-r border-zinc-800 flex flex-col hidden md:flex">
       {/* Logo */}
-      <div className="p-5 border-b border-zinc-800">
+      <div className="p-4 border-b border-zinc-800">
         <div className="flex items-center gap-2">
-          <Database className="h-5 w-5 text-blue-400" />
-          <span className="font-semibold text-zinc-100">Research Vault</span>
+          <Database className="h-4 w-4 text-blue-400" />
+          <span className="font-semibold text-sm text-zinc-100">Research Vault</span>
         </div>
-        <p className="text-xs text-zinc-500 mt-1">Knowledge Hub</p>
       </div>
 
       {/* Nav Items */}
-      <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
+      <nav className="flex-1 p-2 space-y-0.5 overflow-y-auto">
         {/* Feed Section with Keywords */}
         <div>
           <button
             onClick={() => setFeedExpanded(!feedExpanded)}
-            className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-sm transition-colors ${
+            className={`w-full flex items-center justify-between px-2 py-1.5 rounded text-xs transition-colors ${
               isFeedActive
                 ? "bg-zinc-800 text-zinc-100"
                 : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50"
             }`}
           >
-            <div className="flex items-center gap-3">
-              <Rss className="h-4 w-4" />
+            <div className="flex items-center gap-2">
+              <Rss className="h-3.5 w-3.5" />
               Feed
             </div>
-            <ChevronDown className={`h-4 w-4 transition-transform ${feedExpanded ? "" : "-rotate-90"}`} />
+            <ChevronDown className={`h-3 w-3 transition-transform ${feedExpanded ? "" : "-rotate-90"}`} />
           </button>
 
           {feedExpanded && (
-            <div className="mt-1 ml-3 border-l border-zinc-700">
+            <div className="mt-0.5 ml-2 border-l border-zinc-700">
               {keywords.filter(k => k.active).map((keyword) => (
                 <Link
                   key={keyword.id}
                   href={`/feed/${encodeURIComponent(keyword.name)}`}
-                  className={`block pl-4 py-2 text-sm transition-colors ${
+                  className={`block pl-3 py-1 text-xs transition-colors ${
                     pathname === `/feed/${encodeURIComponent(keyword.name)}`
                       ? "text-zinc-100 bg-zinc-800/50"
                       : "text-zinc-500 hover:text-zinc-300"
@@ -101,20 +100,20 @@ export function Sidebar() {
               ))}
 
               {/* Add keyword form */}
-              <form onSubmit={handleAddKeyword} className="flex items-center gap-1 pl-4 py-2">
+              <form onSubmit={handleAddKeyword} className="flex items-center gap-1 pl-3 py-1">
                 <input
                   type="text"
                   value={newKeyword}
                   onChange={(e) => setNewKeyword(e.target.value)}
                   placeholder="Add topic..."
-                  className="flex-1 px-2 py-1 bg-transparent border-b border-zinc-700 text-xs text-zinc-300 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500"
+                  className="flex-1 px-1.5 py-0.5 bg-transparent border-b border-zinc-700 text-xs text-zinc-300 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500"
                 />
                 <button
                   type="submit"
                   disabled={!newKeyword.trim() || adding}
-                  className="p-1 text-zinc-500 hover:text-zinc-300 disabled:opacity-50"
+                  className="p-0.5 text-zinc-500 hover:text-zinc-300 disabled:opacity-50"
                 >
-                  <Plus className="h-3.5 w-3.5" />
+                  <Plus className="h-3 w-3" />
                 </button>
               </form>
             </div>
@@ -130,13 +129,13 @@ export function Sidebar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm transition-colors ${
+              className={`flex items-center gap-2 px-2 py-1.5 rounded text-xs transition-colors ${
                 isActive
                   ? "bg-zinc-800 text-zinc-100"
                   : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50"
               }`}
             >
-              <Icon className="h-4 w-4" />
+              <Icon className="h-3.5 w-3.5" />
               {item.label}
             </Link>
           )
@@ -144,8 +143,8 @@ export function Sidebar() {
       </nav>
 
       {/* Footer */}
-      <div className="p-4 border-t border-zinc-800">
-        <p className="text-xs text-zinc-600">Press R to refresh</p>
+      <div className="p-3 border-t border-zinc-800">
+        <p className="text-[10px] text-zinc-600">Press R to refresh</p>
       </div>
     </aside>
   )
