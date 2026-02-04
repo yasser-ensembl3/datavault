@@ -134,8 +134,8 @@ export function ContentItem({ item }: ContentItemProps) {
   const [expanded, setExpanded] = useState(false)
 
   const linkType = detectLinkType(item.url)
-  const isEmbeddable = linkType === "google-doc" || linkType === "google-sheet"
   const hasDescription = item.description && item.description.length > 0
+  const [embedError, setEmbedError] = useState(false)
 
   const handleClick = () => {
     if (!item.url) {
@@ -143,11 +143,8 @@ export function ContentItem({ item }: ContentItemProps) {
       return
     }
 
-    if (isEmbeddable) {
-      setShowPreview(true)
-    } else {
-      window.open(item.url, "_blank", "noopener,noreferrer")
-    }
+    setEmbedError(false)
+    setShowPreview(true)
   }
 
   const handleOpenExternal = (e: React.MouseEvent) => {
@@ -164,6 +161,7 @@ export function ContentItem({ item }: ContentItemProps) {
 
   const closePreview = () => {
     setShowPreview(false)
+    setEmbedError(false)
   }
 
   return (
@@ -214,18 +212,13 @@ export function ContentItem({ item }: ContentItemProps) {
             </div>
 
             <div className="flex items-center gap-1 flex-shrink-0 mt-1">
-              {isEmbeddable && (
-                <span
-                  onClick={handleOpenExternal}
-                  className="p-1 rounded hover:bg-zinc-700 text-zinc-500 hover:text-zinc-300 cursor-pointer"
-                  title="Open in new tab"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                </span>
-              )}
-              {!isEmbeddable && (
-                <ExternalLink className="h-4 w-4 text-zinc-500 group-hover:text-zinc-300" />
-              )}
+              <span
+                onClick={handleOpenExternal}
+                className="p-1 rounded hover:bg-zinc-700 text-zinc-500 hover:text-zinc-300 cursor-pointer"
+                title="Open in new tab"
+              >
+                <ExternalLink className="h-4 w-4" />
+              </span>
             </div>
           </div>
         </button>
@@ -302,14 +295,32 @@ export function ContentItem({ item }: ContentItemProps) {
               </div>
             </div>
 
-            <div className="h-[calc(100%-52px)]">
-              <iframe
-                src={getEmbedUrl(item.url, linkType)}
-                className="w-full h-full bg-white"
-                title={item.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+            <div className="h-[calc(100%-52px)] relative">
+              {embedError ? (
+                <div className="flex flex-col items-center justify-center h-full text-zinc-400 gap-4">
+                  <Globe className="h-12 w-12 text-zinc-600" />
+                  <p className="text-center">
+                    Ce site ne peut pas être affiché dans un iframe.<br />
+                    <span className="text-zinc-500 text-sm">Le site bloque l&apos;intégration externe.</span>
+                  </p>
+                  <Button
+                    onClick={handleOpenExternal}
+                    className="gap-2"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    Ouvrir dans un nouvel onglet
+                  </Button>
+                </div>
+              ) : (
+                <iframe
+                  src={getEmbedUrl(item.url, linkType)}
+                  className="w-full h-full bg-white"
+                  title={item.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  onError={() => setEmbedError(true)}
+                />
+              )}
             </div>
           </div>
         </div>

@@ -3,7 +3,6 @@
 import { useEffect, useState, useCallback } from "react"
 import { ContentItem } from "./content-item"
 import { FilterBar } from "./filter-bar"
-import { SearchInput } from "./search-input"
 import { AddContentForm } from "./add-content-form"
 import { Loader2, Inbox, RefreshCw } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -43,7 +42,6 @@ export function ContentList() {
   const [selectedType, setSelectedType] = useState("all")
   const [selectedSource, setSelectedSource] = useState("all")
   const [selectedStatus, setSelectedStatus] = useState("all")
-  const [searchQuery, setSearchQuery] = useState("")
 
   const fetchContent = useCallback(async () => {
     setLoading(true)
@@ -88,13 +86,8 @@ export function ContentList() {
       result = result.filter((item) => item.status === selectedStatus)
     }
 
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase()
-      result = result.filter((item) => item.title.toLowerCase().includes(query))
-    }
-
     setFilteredItems(result)
-  }, [items, selectedType, selectedSource, selectedStatus, searchQuery])
+  }, [items, selectedType, selectedSource, selectedStatus])
 
   // Keyboard navigation
   useEffect(() => {
@@ -136,10 +129,6 @@ export function ContentList() {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-        <SearchInput
-          value={searchQuery}
-          onChange={setSearchQuery}
-        />
         <div className="flex items-center gap-3">
           <FilterBar
             types={types}
@@ -170,7 +159,7 @@ export function ContentList() {
       {/* Stats */}
       <div className="text-sm text-zinc-500">
         {filteredItems.length} item{filteredItems.length !== 1 ? "s" : ""}
-        {(selectedType !== "all" || selectedSource !== "all" || selectedStatus !== "all" || searchQuery) && (
+        {(selectedType !== "all" || selectedSource !== "all" || selectedStatus !== "all") && (
           <span> (filtered from {items.length})</span>
         )}
       </div>
@@ -181,7 +170,7 @@ export function ContentList() {
           <Inbox className="h-12 w-12 text-zinc-600 mb-4" />
           <p className="text-zinc-400 mb-2">No content found</p>
           <p className="text-zinc-500 text-sm">
-            {searchQuery || selectedType !== "all" || selectedSource !== "all" || selectedStatus !== "all"
+            {selectedType !== "all" || selectedSource !== "all" || selectedStatus !== "all"
               ? "Try adjusting your filters"
               : "Add some content to your Notion database"}
           </p>

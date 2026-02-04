@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
+import { Sidebar } from "@/components/sidebar"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -23,7 +24,10 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr" className="dark" suppressHydrationWarning>
       <body className={`${inter.className} bg-zinc-950 text-zinc-100 antialiased`}>
-        {children}
+        <Sidebar />
+        <main className="ml-56 min-h-screen">
+          {children}
+        </main>
       </body>
     </html>
   )
