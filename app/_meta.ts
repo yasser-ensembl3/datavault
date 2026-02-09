@@ -3,9 +3,10 @@ export default {
     title: 'Home',
     display: 'hidden'
   },
-  feed: 'Feed',
+  areas: 'Areas',
+  saved: 'Saved',
   assumptions: 'Assumptions',
-  sources: 'Sources',
+  'apis-dataset': 'APIs / Dataset',
   '---': {
     type: 'separator'
   },

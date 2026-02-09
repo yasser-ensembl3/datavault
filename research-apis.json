@@ -1,0 +1,186 @@
+[
+  {
+    "name": "PubMed / NCBI E-utilities",
+    "description": "Access 36M+ biomedical citations from PubMed, PMC, Gene, and other NCBI databases. Search abstracts, retrieve full metadata, and link across life science databases.",
+    "url": "https://www.ncbi.nlm.nih.gov/home/develop/api/",
+    "category": "Health",
+    "auth": "API Key",
+    "free": true
+  },
+  {
+    "name": "Semantic Scholar",
+    "description": "AI-powered academic search engine with 200M+ papers. Provides paper search, citation graphs, author profiles, SPECTER2 embeddings, and paper recommendations.",
+    "url": "https://api.semanticscholar.org/api-docs/",
+    "category": "Academic",
+    "auth": "API Key",
+    "free": true
+  },
+  {
+    "name": "OpenAlex",
+    "description": "Fully open index of 240M+ scholarly works, authors, sources, institutions, and topics. CC0 licensed. Replaces Microsoft Academic Graph.",
+    "url": "https://docs.openalex.org/",
+    "category": "Academic",
+    "auth": "None",
+    "free": true
+  },
+  {
+    "name": "CrossRef",
+    "description": "Metadata for 150M+ scholarly works via DOI. Covers journal articles, books, datasets, dissertations. No signup required. JSON output.",
+    "url": "https://www.crossref.org/documentation/retrieve-metadata/rest-api/",
+    "category": "Academic",
+    "auth": "None",
+    "free": true
+  },
+  {
+    "name": "CORE",
+    "description": "World's largest collection of open access research papers. Full-text access to papers from 10,000+ data providers worldwide.",
+    "url": "https://core.ac.uk/services/api",
+    "category": "Academic",
+    "auth": "API Key",
+    "free": true
+  },
+  {
+    "name": "Europe PMC",
+    "description": "33M+ life science publications including PubMed content, patents, and clinical guidelines. Full-text search with citation metadata and cross-references to UniProt, ENA.",
+    "url": "https://europepmc.org/RestfulWebService",
+    "category": "Health",
+    "auth": "None",
+    "free": true
+  },
+  {
+    "name": "Unpaywall",
+    "description": "Database of 20M+ free scholarly articles. Given a DOI, returns open access PDF links from 50,000+ publishers and repositories.",
+    "url": "https://unpaywall.org/products/api",
+    "category": "Academic",
+    "auth": "None",
+    "free": true
+  },
+  {
+    "name": "ClinicalTrials.gov",
+    "description": "REST API (v2.0) for accessing clinical trial study records from the NIH/NLM registry. Search trials by condition, intervention, location, and status.",
+    "url": "https://clinicaltrials.gov/data-api/api",
+    "category": "Health",
+    "auth": "None",
+    "free": true
+  },
+  {
+    "name": "WHO Global Health Observatory",
+    "description": "2,300+ health indicators for 245 countries/regions from the World Health Organization. Covers disease burden, mortality, health systems, and risk factors via OData protocol.",
+    "url": "https://www.who.int/data/gho/info/gho-odata-api",
+    "category": "Health",
+    "auth": "None",
+    "free": true
+  },
+  {
+    "name": "openFDA",
+    "description": "Public FDA data on drugs, medical devices, and food. Includes adverse events, drug labels, recalls, and enforcement reports.",
+    "url": "https://open.fda.gov",
+    "category": "Health",
+    "auth": "API Key",
+    "free": true
+  },
+  {
+    "name": "Open Science Framework",
+    "description": "Repository and archive for study designs, research materials, data, manuscripts, and preprints. Supports open science workflows and reproducibility.",
+    "url": "https://developer.osf.io",
+    "category": "Science",
+    "auth": "None",
+    "free": true
+  },
+  {
+    "name": "SHARE",
+    "description": "Free, open dataset about research and scholarly activities. Aggregates metadata from repositories, journals, and funders to track the research lifecycle.",
+    "url": "https://share.osf.io/api/v2/",
+    "category": "Academic",
+    "auth": "None",
+    "free": true
+  },
+  {
+    "name": "HuggingFace",
+    "description": "Access 400K+ ML models, 100K+ datasets, and inference APIs. Covers NLP, computer vision, audio, and multimodal tasks. Free serverless inference tier available.",
+    "url": "https://huggingface.co/docs",
+    "category": "Machine Learning",
+    "auth": "API Key",
+    "free": true
+  },
+  {
+    "name": "Papers With Code",
+    "description": "Machine learning papers linked with code implementations, datasets, evaluation tables, and benchmarks. Community-driven, CC-BY-SA licensed.",
+    "url": "https://paperswithcode.com/api/v1/docs/",
+    "category": "Machine Learning",
+    "auth": "None",
+    "free": true
+  },
+  {
+    "name": "Kaggle",
+    "description": "Access and search 200K+ public datasets, notebooks, and competition data for ML research. Download datasets programmatically.",
+    "url": "https://www.kaggle.com/docs/api",
+    "category": "Data",
+    "auth": "API Key",
+    "free": true
+  },
+  {
+    "name": "NLP Cloud",
+    "description": "Production-ready NLP API using spaCy and transformers. Supports NER, sentiment analysis, classification, summarization, translation, and question answering.",
+    "url": "https://nlpcloud.io",
+    "category": "Machine Learning",
+    "auth": "API Key",
+    "free": true
+  },
+  {
+    "name": "Wolfram Alpha",
+    "description": "Computational knowledge engine. Answers factual queries using curated data and algorithms across math, science, health, and statistics domains.",
+    "url": "https://products.wolframalpha.com/api/",
+    "category": "Science",
+    "auth": "API Key",
+    "free": true
+  },
+  {
+    "name": "Wikidata",
+    "description": "Collaboratively edited knowledge base with structured data on 100M+ items. Covers scientific entities, diseases, genes, researchers, and institutions.",
+    "url": "https://www.wikidata.org/w/api.php?action=help",
+    "category": "Data",
+    "auth": "None",
+    "free": true
+  },
+  {
+    "name": "Wikipedia",
+    "description": "MediaWiki API for programmatic access to Wikipedia's encyclopedia content. Useful for extracting definitions, summaries, and structured knowledge on any research topic.",
+    "url": "https://www.mediawiki.org/wiki/API:Main_page",
+    "category": "Data",
+    "auth": "None",
+    "free": true
+  },
+  {
+    "name": "Nobel Prize",
+    "description": "Open data about Nobel Prize laureates, their works, motivations, and affiliated institutions. Useful for research impact and history of science analysis.",
+    "url": "https://www.nobelprize.org/about/developer-zone-2/",
+    "category": "Science",
+    "auth": "None",
+    "free": true
+  },
+  {
+    "name": "NASA ADS",
+    "description": "NASA Astrophysics Data System. Comprehensive digital library for physics, astrophysics, and geophysics research with citation tracking and full-text search.",
+    "url": "https://ui.adsabs.harvard.edu/help/api/api-docs.html",
+    "category": "Science",
+    "auth": "API Key",
+    "free": true
+  },
+  {
+    "name": "Infermedica",
+    "description": "NLP-based symptom checker and patient triage API for health diagnosis from text. Useful for ADHD/autism symptom research and clinical decision support.",
+    "url": "https://developer.infermedica.com/docs/",
+    "category": "Health",
+    "auth": "API Key",
+    "free": true
+  },
+  {
+    "name": "Lexigram",
+    "description": "Medical NLP that extracts mentions of clinical concepts from text and gives access to clinical ontology. Maps text to standardized medical terminology.",
+    "url": "https://docs.lexigram.io/",
+    "category": "Health",
+    "auth": "API Key",
+    "free": true
+  }
+]

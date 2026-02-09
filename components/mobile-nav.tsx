@@ -2,12 +2,13 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Database, Rss, Lightbulb, Server } from "lucide-react"
+import { Globe, Bookmark, Lightbulb, Database } from "lucide-react"
 
 const navItems = [
-  { href: "/feed", label: "Feed", icon: Rss },
+  { href: "/areas", label: "Areas", icon: Globe },
+  { href: "/saved", label: "Saved", icon: Bookmark },
   { href: "/assumptions", label: "Assumptions", icon: Lightbulb },
-  { href: "/sources", label: "Sources", icon: Server },
+  { href: "/apis-dataset", label: "APIs / Dataset", icon: Database },
 ]
 
 export function MobileNav() {

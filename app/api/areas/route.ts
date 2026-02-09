@@ -55,23 +55,24 @@ function getCheckboxValue(properties: Record<string, unknown>, ...names: string[
 }
 
 export async function GET() {
-  // For now, return hardcoded topics with their database IDs
   const topics = [
-    {
-      id: "machine-learning",
-      name: "Machine Learning",
-      databaseId: "2d958fe731b180d5a744d354f84db9fb",
-      active: true,
-    }
+    { id: "machine-learning", name: "Machine Learning", active: true },
+    { id: "adhd", name: "ADHD", active: true },
+    { id: "autism", name: "Autism", active: true },
+    { id: "psychology", name: "Psychology", active: true },
+    { id: "neuroscience", name: "Neuroscience", active: true },
+    { id: "deep-learning", name: "Deep Learning", active: true },
+    { id: "computer-vision", name: "Computer Vision", active: true },
+    { id: "nlp", name: "NLP", active: true },
   ]
 
-  return NextResponse.json({ keywords: topics })
+  return NextResponse.json({ areas: topics })
 }
 
 export async function POST(request: Request) {
   if (!DATABASE_ID) {
     return NextResponse.json(
-      { error: "Keywords database not configured" },
+      { error: "Areas database not configured" },
       { status: 500 }
     )
   }
@@ -82,7 +83,7 @@ export async function POST(request: Request) {
 
     if (!name) {
       return NextResponse.json(
-        { error: "Topic name is required" },
+        { error: "Area name is required" },
         { status: 400 }
       )
     }
@@ -107,15 +108,15 @@ export async function POST(request: Request) {
 
     if (!response.ok) {
       const error = await response.json()
-      throw new Error(error.message || "Failed to create topic")
+      throw new Error(error.message || "Failed to create area")
     }
 
     const page = await response.json()
     return NextResponse.json({ success: true, id: page.id })
   } catch (error) {
-    console.error("Error creating topic:", error)
+    console.error("Error creating area:", error)
     return NextResponse.json(
-      { error: "Failed to create topic" },
+      { error: "Failed to create area" },
       { status: 500 }
     )
   }
@@ -151,14 +152,14 @@ export async function PATCH(request: Request) {
 
     if (!response.ok) {
       const error = await response.json()
-      throw new Error(error.message || "Failed to update keyword")
+      throw new Error(error.message || "Failed to update area")
     }
 
     return NextResponse.json({ success: true })
   } catch (error) {
-    console.error("Error updating keyword:", error)
+    console.error("Error updating area:", error)
     return NextResponse.json(
-      { error: "Failed to update keyword" },
+      { error: "Failed to update area" },
       { status: 500 }
     )
   }
@@ -188,14 +189,14 @@ export async function DELETE(request: Request) {
 
     if (!response.ok) {
       const error = await response.json()
-      throw new Error(error.message || "Failed to delete keyword")
+      throw new Error(error.message || "Failed to delete area")
     }
 
     return NextResponse.json({ success: true })
   } catch (error) {
-    console.error("Error deleting keyword:", error)
+    console.error("Error deleting area:", error)
     return NextResponse.json(
-      { error: "Failed to delete keyword" },
+      { error: "Failed to delete area" },
       { status: 500 }
     )
   }

@@ -124,7 +124,7 @@ export async function searchArxiv(query: string, maxResults: number = 20): Promi
     search_query: `all:${query}`,
     start: '0',
     max_results: maxResults.toString(),
-    sortBy: 'submittedDate',
+    sortBy: 'relevance',
     sortOrder: 'descending',
   })
 
